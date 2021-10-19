@@ -1,17 +1,3 @@
-/* Minimalistic Responsive CSS */
-@font-face {
-    font-family: 'Anggota';
-    src:  url('webfonts_Anggota/Anggota.ttf.woff') format('woff'),
-    url('webfonts_Anggota/Anggota.ttf.svg#Anggota') format('svg'),
-    url('webfonts_Anggota/Anggota.ttf.eot'),
-    url('webfonts_Anggota/Anggota.eot?#iefix') format('embedded-opentype'); 
-    font-weight: normal;
-    font-style: normal;
-}
-
-body, #sudokuTable {
-font-family: Anggota !important;
-}
 .w-100 {
     width: 100%;
 }
