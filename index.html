@@ -1,0 +1,106 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Sudoku Puzzle Generator</title>
+    <meta name="description" content="A Sudoku Generator">
+    <meta name="author" content="Elizabeth H. Heck">
+
+    <!--<meta property="og:title" content="A Sudoku Generator">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="A Sudoku Generator">
+    <meta property="og:image" content="">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">-->
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Sudoku Builder</h1>
+    </header>
+    <main>
+        <div class="">
+            <div style="width: 100%;text-align:center;margin:20px auto;">
+                <button onclick="downloadImagePuzzle()" class="clickbtn">Download Puzzle</button>
+                <button onclick="downloadImageAnswer()" class="clickbtn">Download Answer</button>
+            </div>
+            <table id="sudokuTable" class="mx-auto"></table>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="js/ehhSudoku.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <script>
+        function downloadImagePuzzle(){
+            var container = document.getElementById("sudokuTable"); 
+
+            /* Function to add style element */
+            function addStyle(styles) {
+                
+                /* Create style document */
+                var css = document.createElement('style');
+                css.type = 'text/css';
+                
+                css.appendChild(document.createTextNode(styles));
+                
+                /* Append style to the tag name */
+                document.getElementsByTagName("head")[0].appendChild(css);
+            }
+          
+            /* Set the style */
+            
+            var styles = '.cell3, .cell1 { color: white }';
+            addStyle(styles);
+
+            html2canvas(container,{allowTaint : true}).then(function(canvas) {
+                var link = document.createElement("a");
+                document.body.appendChild(link);
+                link.download = "4x4sudokuPuzzle.png";
+                link.href = canvas.toDataURL("image/png");
+                link.target = '_blank';
+                link.click();
+            });
+        }
+        function downloadImageAnswer(){
+            var container = document.getElementById("sudokuTable"); 
+            
+            /* Function to add style element */
+            function addStyle(styles) {
+                
+                /* Create style document */
+                var css = document.createElement('style');
+                css.type = 'text/css';
+                
+                css.appendChild(document.createTextNode(styles));
+                
+                /* Append style to the tag name */
+                document.getElementsByTagName("head")[0].appendChild(css);
+            }
+          
+            /* Set the style */
+            
+            var styles = '.cell3, .cell1 { color: black }';
+            addStyle(styles);
+
+
+            html2canvas(container,{allowTaint : true}).then(function(canvas) {
+                
+                var link = document.createElement("a");
+                document.body.appendChild(link);
+                link.download = "4x4sudokuAnswer.png";
+                link.href = canvas.toDataURL("image/png");
+                link.target = '_blank';
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
